@@ -59,6 +59,8 @@
 										<th scope="col">Diseases</th>
 										<th scope="col">Doctor Name</th>
 										<th scope="col">Status</th>
+										<th scope="col">Comment</th>
+										<th scope="col">Admit</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -86,6 +88,8 @@
 											<a href="#" class="btn btn-sm btn-success">Confirmed</a> <%}
                                     %>
 										</td>
+										<td><%=ap.getStatus() %></td>
+										<td><%=ap.getAdmit() %></td>
 									</tr>
 									<%}
                             %>

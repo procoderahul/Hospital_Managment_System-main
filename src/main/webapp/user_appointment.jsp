@@ -89,6 +89,9 @@
                             <label for="phno" class="form-label">Phone No</label>
                             <input maxlength="10" required type="text" class="form-control" id="phno" name="phno">
                         </div>
+                        
+                        
+                       
 
                         <div class="col-md-6">
                             <label for="diseases" class="form-label">Diseases</label>
@@ -115,6 +118,17 @@
                             <label for="address" class="form-label">Full Address</label>
                             <textarea required name="address" class="form-control" id="address" rows="3" cols=""></textarea>
                         </div>
+                        
+                        <div class="col-md-12">
+    						<div class="form-check">
+       						 	
+       						 	<label for="admit" class="form-check-label">Admit</label>
+       						 	<input type="checkbox" class="form-check-input" id="admit" name="admit">
+        						
+   							 </div>
+						</div>
+
+
 
                         <c:if test="${empty userObj }">
                             <a href="user_login.jsp" class="col-md-6 offset-md-3 btn btn-success">Submit</a>

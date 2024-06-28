@@ -1,9 +1,12 @@
 package com.doctor.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.dao.AppointmentDAO;
 import com.db.DBConnect;
+import com.entity.Appointment;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,14 +25,15 @@ public class UpdateStatus extends HttpServlet{
 			int id=Integer.parseInt(req.getParameter("id"));
 			int did=Integer.parseInt(req.getParameter("did"));
 			String comm=req.getParameter("comm");
+			Boolean adm = Boolean.parseBoolean(req.getParameter("adm"));
 			
 			AppointmentDAO dao=new AppointmentDAO(DBConnect.getConn());
 			
 			HttpSession session=req.getSession();
 			
-			if(dao.updateCommentStatus(id, did, comm)) {
-				
+			if(dao.updateCommentStatus(id,adm, did, comm)) {
 				session.setAttribute("succMsg", "Comment Updated");
+				dao.getAvailbleBeds();
 				resp.sendRedirect("doctor/patient.jsp");
 			}else {
 				session.setAttribute("errorMsg", "Something Wrong on Server");

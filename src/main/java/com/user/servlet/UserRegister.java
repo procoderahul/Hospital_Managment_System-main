@@ -35,7 +35,7 @@ public class UserRegister extends HttpServlet {
 			
 			if(f) {
 				session.setAttribute("succMsg","Register Successfully");
-				resp.sendRedirect("signup.jsp");
+				resp.sendRedirect("user_login.jsp");
 			}
 			else {
 				session.setAttribute("errorMsg","Somthing Wrong on server");

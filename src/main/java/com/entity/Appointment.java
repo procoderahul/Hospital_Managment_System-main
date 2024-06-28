@@ -14,6 +14,7 @@ public class Appointment {
 	private int doctorId;
 	private String address;
 	private String status; 
+	private Boolean admit;
 
 	public Appointment() {
 		super();
@@ -21,7 +22,7 @@ public class Appointment {
 	}
 
 	public Appointment(int userId, String fullName, String gender, String age, String appoinDate, String email,
-			String phNo, String diseases, int doctorId, String address, String status) {
+			String phNo, String diseases, int doctorId, String address, String status, Boolean admit) {
 		super();
 		this.userId = userId;
 		this.fullName = fullName;
@@ -34,6 +35,7 @@ public class Appointment {
 		this.doctorId = doctorId;
 		this.address = address;
 		this.status = status;
+		this.admit = admit;
 	}
 
 	public int getId() {
@@ -130,6 +132,14 @@ public class Appointment {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	public Boolean getAdmit() {
+		return admit;
+	}
+
+	public void setAdmit(Boolean admit) {
+		this.admit = admit;
 	}
 
 }

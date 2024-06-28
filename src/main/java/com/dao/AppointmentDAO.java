@@ -11,6 +11,7 @@ import com.entity.Appointment;
 public class AppointmentDAO {
 
 	private Connection conn;
+	private final int total_beds=50;
 
 	public AppointmentDAO(Connection conn) {
 		super();
@@ -22,7 +23,7 @@ public class AppointmentDAO {
 		boolean f = false;
 
 		try {
-			String sql = "INSERT INTO appointment(user_id, fullname, gender,age, appoint_date, email, phno, diseases, doctor_id, address, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+			String sql = "INSERT INTO appointment(user_id, fullname, gender,age, appoint_date, email, phno, diseases, doctor_id, address, status, admit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -37,6 +38,8 @@ public class AppointmentDAO {
 			ps.setInt(9, ap.getDoctorId());
 			ps.setString(10, ap.getAddress());
 			ps.setString(11, ap.getStatus());
+			ps.setBoolean(12, ap.getAdmit());
+			
 
 			int i = ps.executeUpdate();
 			if (i == 1) {
@@ -76,6 +79,7 @@ public class AppointmentDAO {
 				ap.setDoctorId(rs.getInt(10));
 				ap.setAddress(rs.getString(11));
 				ap.setStatus(rs.getString(12));
+				ap.setAdmit(rs.getBoolean(13));
 				list.add(ap);
 			}
 
@@ -113,6 +117,7 @@ public class AppointmentDAO {
 				ap.setDoctorId(rs.getInt(10));
 				ap.setAddress(rs.getString(11));
 				ap.setStatus(rs.getString(12));
+				ap.setAdmit(rs.getBoolean(13));
 				list.add(ap);
 			}
 
@@ -150,6 +155,7 @@ public class AppointmentDAO {
 				ap.setDoctorId(rs.getInt(10));
 				ap.setAddress(rs.getString(11));
 				ap.setStatus(rs.getString(12));
+				ap.setAdmit(rs.getBoolean(13));
 				
 			}
 
@@ -161,14 +167,16 @@ public class AppointmentDAO {
 
 	}
 
-public boolean updateCommentStatus(int id,int doctId,String comm) {
+public boolean updateCommentStatus(int id,Boolean adm, int doctId,String comm) {
 	boolean f=false;
 	try {
-		String sql="update appointment set status=? where id=? and doctor_id=?";
+		String sql="update appointment set status=?, admit=? where id=? and doctor_id=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, comm);
-		ps.setInt(2, id);
-		ps.setInt(3, doctId);
+		ps.setBoolean(2, adm);
+		ps.setInt(3, id);
+		ps.setInt(4, doctId);
+		
 		
 		int i=ps.executeUpdate();
 		if(i==1) {
@@ -208,6 +216,7 @@ public List<Appointment> getAllAppointment() {
 			ap.setDoctorId(rs.getInt(10));
 			ap.setAddress(rs.getString(11));
 			ap.setStatus(rs.getString(12));
+			ap.setAdmit(rs.getBoolean(13));
 			list.add(ap);
 		}
 
@@ -218,4 +227,25 @@ public List<Appointment> getAllAppointment() {
 	return list;
 
 }
+public int getAvailbleBeds() {
+	int occupied = 0;
+
+	try {
+
+		String sql = "select count(*) from appointment where admit=1";
+		PreparedStatement ps = conn.prepareStatement(sql);
+
+		ResultSet rs = ps.executeQuery();
+
+		while (rs.next()) {
+			occupied=rs.getInt(1);
+		}
+		return total_beds-occupied;
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return -1;
+}
+
 }

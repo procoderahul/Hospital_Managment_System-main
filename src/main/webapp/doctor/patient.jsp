@@ -76,7 +76,7 @@
                                         <td><%=ap.getStatus() %></td>
                                         <td>
                                         <%
-                                        if("pending".equals(ap.getStatus())){%>
+                                        if("Pending".equals(ap.getStatus())){%>
                                         	<a href="comment.jsp?id=<%=ap.getId()%>" class="btn btn-success btn-sm">Comment</a>
                                        <%  }else{%>
                                     	   <a href="#" class="btn btn-success btn-sm disabled">Comment</a>

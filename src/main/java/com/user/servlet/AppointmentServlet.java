@@ -15,6 +15,17 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/addAppointment")
 public class AppointmentServlet extends HttpServlet{
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	    AppointmentDAO dao = new AppointmentDAO(DBConnect.getConn());
+	    int availableBeds = dao.getAvailbleBeds();
+	    
+	    HttpSession session = req.getSession();
+	    session.setAttribute("availableBeds", availableBeds);
+	    req.getRequestDispatcher("index.jsp").forward(req, resp);
+	}
+
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,14 +40,26 @@ public class AppointmentServlet extends HttpServlet{
 		String diseases=req.getParameter("diseases");
 		int doctor_id=Integer.parseInt(req.getParameter("doct"));
 		String address=req.getParameter("address");
+		String temp = req.getParameter("admit");
+		Boolean admit=temp==null? false : req.getParameter("admit").equals("on");
 
-		Appointment ap=new Appointment(userId, fullName, gender, age, appoint_date, email, phno, diseases, doctor_id, address, "Pending");
+		Appointment ap=new Appointment(userId, fullName, gender, age, appoint_date, email, phno, diseases, doctor_id, address, "Pending", admit);
 		
 		AppointmentDAO dao=new AppointmentDAO(DBConnect.getConn());
+		
 		HttpSession session=req.getSession();
 		
-		if(dao.addAppointment(ap)) {
+		if(admit && dao.getAvailbleBeds() < 1) {
+			session.setAttribute("errorMsg", "Bed Unavailable");
+			resp.sendRedirect("user_appointment.jsp");
+		}
+		
+		else if(dao.addAppointment(ap)) {
 			session.setAttribute("succMsg", "Appointment Successfully");
+			 if (admit) {
+	                int availableBeds = dao.getAvailbleBeds();
+	                session.setAttribute("availableBeds", availableBeds);
+	            }
 			resp.sendRedirect("user_appointment.jsp");
 			
 		}else {
@@ -46,7 +69,16 @@ public class AppointmentServlet extends HttpServlet{
 		
 		
 	}
-	
-	
-
 }
+	
+/*
+ * @Override protected void doGet(HttpServletRequest req, HttpServletResponse
+ * resp) throws ServletException, IOException { AppointmentDAO dao = new
+ * AppointmentDAO(DBConnect.getConn()); int availableBeds =
+ * dao.getAvailbleBeds(); req.setAttribute("availableBeds", availableBeds);
+ * req.getRequestDispatcher("index.jsp").forward(req, resp);
+ * 
+ * }
+ * 
+ * }
+ */

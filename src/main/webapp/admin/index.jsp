@@ -42,11 +42,14 @@
 			<div class="col-md-4">
 				<div class="card paint-card">
 					<!-- corrected class name -->
-					<div class="card-body text-center text-success">
+					<div class="card-body text-center text-primary">
 						<i class="fas fa-user-md fa-3x"></i><br>
+												<a href="view_doctors.jsp" style="text-decoration:none">
+						
 						<p class="fs-4 text-center">
 							Doctor<br><%=dao.countDoctor() %>
 						</p>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -57,7 +60,7 @@
 			<div class="col-md-4">
 				<div class="card paint-card">
 					<!-- corrected class name -->
-					<div class="card-body text-center text-success">
+					<div class="card-body text-center text-primary">
 						<i class="fas fa-user-circle fa-3x"></i><br>
 						<p class="fs-4 text-center">
 							User<br><%=dao.countUser() %>
@@ -69,12 +72,15 @@
 			<div class="col-md-4">
 				<div class="card paint-card">
 					<!-- corrected class name -->
-					<div class="card-body text-center text-success">
+					<div class="card-body text-center text-primary" >
 						<i class="fas fa-calendar-check fa-3x"></i><br>
 						<!-- corrected icon class -->
+												<a href="patient.jsp" style="text-decoration:none">
+						
 						<p class="fs-4 text-center">
 							Total Appointment<br><%=dao.countAppointment() %>
 						</p>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -82,7 +88,7 @@
 			<div class="col-md-4 mt-2">
 				<div class="card paint-card" data-bs-toggle="modal" data-bs-target="#exampleModal">
 					<!-- corrected data-bs-toggle attribute -->
-					<div class="card-body text-center text-success">
+					<div class="card-body text-center text-primary">
 						<i class="far fa-calendar-check fa-3x"></i><br>
 						<!-- corrected icon class -->
 						<p class="fs-4 text-center">
@@ -91,8 +97,6 @@
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 
