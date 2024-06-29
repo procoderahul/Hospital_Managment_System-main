@@ -35,6 +35,22 @@ public class UserDao {
 		}
 		return f;
 	}
+
+	public boolean emailExists(String email) {
+        boolean exists = false;
+        try {
+            String sql = "select * from user_dtls where email=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                exists = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
 	
 	public User login(String em, String psw) {
 		User u=null;  
