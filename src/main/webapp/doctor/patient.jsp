@@ -79,7 +79,7 @@
                                         if("Pending".equals(ap.getStatus())){%>
                                         	<a href="comment.jsp?id=<%=ap.getId()%>" class="btn btn-success btn-sm">Comment</a>
                                        <%  }else{%>
-                                    	   <a href="#" class="btn btn-success btn-sm disabled">Comment</a>
+                                    	   <a href="#" class="btn btn-success btn-sm disabled">Commented</a>
                                         <%}
                                         %>
                                         
