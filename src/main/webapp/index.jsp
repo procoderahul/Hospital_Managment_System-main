@@ -15,6 +15,22 @@
 	margin-top: 50px;
 }
 
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+    padding: 15px;
+    border-radius: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Text shadow for better readability */
+}
+
+.carousel-caption h5 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.carousel-caption p {
+    font-size: 1.25rem;
+}
 .carousel-item img {
         filter: brightness(0.7);
         position: relative;
@@ -92,23 +108,23 @@
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img src="img/Home 3.jpg" class="d-block w-100" alt="..."
-					height="700px">
+					height="800px">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>Take The Best Quality Health Treatment</h5>
 					<p>Give the gift of good health to your loved ones</p>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="img/aa2.jpg" class="d-block w-100" alt="..."
-					height="700px">
+				<img src="img/caro1.jpg" class="d-block w-100" alt="..."
+					height="800px">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>Quality Management System</h5>
 					<p>DevCare proHealth Check for a healthier tomorrow!</p>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="img/aa1.jpg" class="d-block w-100" alt="..."
-					height="700px">
+				<img src="img/aa2.jpg" class="d-block w-100" alt="..."
+					height="800px">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>Occupational Health and Safety Management System</h5>
 					<p>A Good Laugh and Long Sleep Are The Best Cures In Doctor's
