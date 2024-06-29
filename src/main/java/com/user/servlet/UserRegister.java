@@ -25,22 +25,24 @@ public class UserRegister extends HttpServlet {
 			String email=req.getParameter("email");
 			String password=req.getParameter("password");
 			
-			User u=new User(fullName,email,password);
-			
-			UserDao dao=new UserDao(DBConnect.getConn());
-			
-			HttpSession session=req.getSession();
-			
-			boolean f=dao.register(u);
-			
-			if(f) {
-				session.setAttribute("succMsg","Register Successfully");
-				resp.sendRedirect("user_login.jsp");
-			}
-			else {
-				session.setAttribute("errorMsg","Somthing Wrong on server");
-				resp.sendRedirect("signup.jsp");
-			}
+			UserDao dao = new UserDao(DBConnect.getConn());
+            HttpSession session = req.getSession();
+
+            if (dao.emailExists(email)) {
+                session.setAttribute("errorMsg", "Email is already registered");
+                resp.sendRedirect("signup.jsp");
+            } else {
+                User u = new User(fullName, email, password);
+                boolean f = dao.register(u);
+
+                if (f) {
+                    session.setAttribute("succMsg", "Register Successfully");
+                    resp.sendRedirect("user_login.jsp");
+                } else {
+                    session.setAttribute("errorMsg", "Something went wrong on the server");
+                    resp.sendRedirect("signup.jsp");
+                }
+            }
 			
 			
 		} catch (Exception e) {
