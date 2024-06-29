@@ -122,7 +122,7 @@ body {
 							<div class="col-md-6">
 								<label for="appoint_date" class="form-label">Appointment
 									Date</label> <input required type="date" class="form-control"
-									id="appoint_date" name="appoint_date">
+									id="appoint_date" name="appoint_date" min="<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %>">
 							</div>
 
 							<div class="col-md-6">
