@@ -47,16 +47,20 @@
         %>
 
         <div class="row">
-            <div class="col-md-4 offset-md-2">
-                <div class="card paint-card text-light">
-                    <div class="card-body text-center">
-                        <i class="fas fa-user-md fa-3x"></i><br>
-                        <p class="fs-4">
-                            Doctor<br><%=dao.countDoctor()%>
-                        </p>
-                    </div>
-                </div>
-            </div>
+			<div class="col-md-4 offset-md-2">
+				<div class="card paint-card text-light">
+					<div class="card-body text-center">
+						<a href="edit_profile.jsp"
+							style="text-decoration: none; color: white"> <i
+							class="fas fa-user-md fa-3x"></i><br>
+							<p class="fs-4">
+								Edit Profile<br> <i class="fas fa-user-circle"></i>${docObj.fullName}
+
+							</p>
+					</div>
+					</a>
+				</div>
+			</div>
 
             <div class="col-md-4 ">
                 <div class="card paint-card text-light">
