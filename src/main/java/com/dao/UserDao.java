@@ -53,6 +53,22 @@ public class UserDao {
         return exists;
     }
 
+    public boolean phoneNumberExists(String phoneNumber) {
+        boolean exists = false;
+        try {
+            String sql = "select * from user_dtls where phone_number=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, phoneNumber);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                exists = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
+
     public User login(String identifier, String password) {
         User u = null;
         try {
