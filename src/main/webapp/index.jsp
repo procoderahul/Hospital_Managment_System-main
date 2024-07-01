@@ -110,25 +110,24 @@
 				<img src="img/Home 3.jpg" class="d-block w-100" alt="..."
 					height="800px">
 				<div class="carousel-caption d-none d-md-block">
-					<h5>Take The Best Quality Health Treatment</h5>
-					<p>Give the gift of good health to your loved ones</p>
+					<h5>Receive Top-Tier Health Care Services</h5>
+					<p>Offer the gift of excellent health to your dear ones</p>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<img src="img/caro1.jpg" class="d-block w-100" alt="..."
 					height="800px">
 				<div class="carousel-caption d-none d-md-block">
-					<h5>Quality Management System</h5>
-					<p>DevCare proHealth Check for a healthier tomorrow!</p>
+					<h5>Excellence in Quality Management</h5>
+					<p>MEDIHELP proHealth Check ensures a healthier future!</p>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<img src="img/aa2.jpg" class="d-block w-100" alt="..."
 					height="800px">
 				<div class="carousel-caption d-none d-md-block">
-					<h5>Occupational Health and Safety Management System</h5>
-					<p>A Good Laugh and Long Sleep Are The Best Cures In Doctor's
-						Book</p>
+					<h5>Workplace Health and Safety Program</h5>
+					<p>Laughter and adequate sleep are the best remedies, according to doctors</p>
 				</div>
 			</div>
 		</div>
