@@ -2,7 +2,6 @@ package com.user.servlet;
 
 import java.io.IOException;
 
-
 import com.dao.UserDao;
 import com.db.DBConnect;
 import com.entity.User;
@@ -17,22 +16,22 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/user_register")
 public class UserRegister extends HttpServlet {
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            String fullName = req.getParameter("fullname");
+            String email = req.getParameter("email");
+            String password = req.getParameter("password");
+            String phoneNumber = req.getParameter("phonenumber");
 
-			String fullName=req.getParameter("fullname");
-			String email=req.getParameter("email");
-			String password=req.getParameter("password");
-			
-			UserDao dao = new UserDao(DBConnect.getConn());
+            UserDao dao = new UserDao(DBConnect.getConn());
             HttpSession session = req.getSession();
 
             if (dao.emailExists(email)) {
                 session.setAttribute("errorMsg", "Email is already registered");
                 resp.sendRedirect("signup.jsp");
             } else {
-                User u = new User(fullName, email, password);
+                User u = new User(fullName, email, password, phoneNumber);
                 boolean f = dao.register(u);
 
                 if (f) {
@@ -43,12 +42,8 @@ public class UserRegister extends HttpServlet {
                     resp.sendRedirect("signup.jsp");
                 }
             }
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-
-	}
-
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
