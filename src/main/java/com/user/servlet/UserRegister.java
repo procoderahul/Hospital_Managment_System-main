@@ -30,6 +30,9 @@ public class UserRegister extends HttpServlet {
             if (dao.emailExists(email)) {
                 session.setAttribute("errorMsg", "Email is already registered");
                 resp.sendRedirect("signup.jsp");
+            } else if (dao.phoneNumberExists(phoneNumber)) {
+                session.setAttribute("errorMsg", "Phone number is already registered");
+                resp.sendRedirect("signup.jsp");
             } else {
                 User u = new User(fullName, email, password, phoneNumber);
                 boolean f = dao.register(u);
