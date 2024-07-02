@@ -5,8 +5,8 @@
 		<a class="navbar-brand" href="index.jsp"><i
 			class="fa-solid fa-laptop-medical"></i> MediHelp</a>
 			<span class="navbar-text text-white ms-3">
-                Available Beds: <c:out value="${availableBeds != null ? availableBeds : 'N/A'}" />
-            </span>
+                Urgent Slots: <c:out value="${availableBeds != null ? availableBeds : 'N/A'}" />
+   Â Â Â Â Â Â Â Â Â </span>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
