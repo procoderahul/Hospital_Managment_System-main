@@ -11,7 +11,7 @@ import com.entity.Appointment;
 public class AppointmentDAO {
 
 	private Connection conn;
-	private final int total_beds=50;
+	private final int total_beds=15;
 
 	public AppointmentDAO(Connection conn) {
 		super();
