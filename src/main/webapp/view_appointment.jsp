@@ -69,7 +69,7 @@
 										<th scope="col">Doctor Name</th>
 										<th scope="col">Status</th>
 										<th scope="col">Comment</th>
-										<th scope="col">Admit</th>
+										<th scope="col">Urgent Slots</th>
 									</tr>
 								</thead>
 								<tbody>
