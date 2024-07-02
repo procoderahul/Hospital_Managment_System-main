@@ -169,7 +169,7 @@ body {
 
 							<div class="col-md-12">
 								<div class="form-check">
-									<label for="admit" class="form-check-label">Admit</label> <input
+									<label for="admit" class="form-check-label">Urgent Slot</label> <input
 										type="checkbox" class="form-check-input" id="admit"
 										name="admit">
 								</div>
