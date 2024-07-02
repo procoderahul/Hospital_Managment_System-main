@@ -50,7 +50,7 @@ public class AppointmentServlet extends HttpServlet{
 		HttpSession session=req.getSession();
 		
 		if(admit && dao.getAvailbleBeds() < 1) {
-			session.setAttribute("errorMsg", "Bed Unavailable");
+			session.setAttribute("errorMsg", "Urgent Slots Unavailable");
 			resp.sendRedirect("user_appointment.jsp");
 		}
 		
